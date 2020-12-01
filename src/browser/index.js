@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Home from '../shared/Home/home';
+import {BrowserRouter} from 'react-router-dom';
+import App from '../shared/App';
 
-render(<Home/>, document.getElementById("root"));
+render(<BrowserRouter><App/></BrowserRouter>, document.getElementById("root"));

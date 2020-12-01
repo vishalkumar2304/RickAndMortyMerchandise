@@ -2,8 +2,9 @@ import express from 'express';
 
 import React from 'react';
 import {renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router-dom';
 
-import Home from "../shared/Home/home";
+import App from "../shared/App";
 
 const app = express(),
 PORT = process.env.PORT || 8083;
@@ -18,7 +19,7 @@ app.use('^/$', (req, res, next)=>{
             <script src="/bundle.js" defer></script>
         </head>
         <body>
-            <div id="root">${renderToString(<Home/>)}</div>
+            <div id="root">${renderToString(<StaticRouter location={req.url} context={{}}><App/></StaticRouter>)}</div>
         </body>
         </html>`
     )
