@@ -1,11 +1,32 @@
 import React from 'react';
+import { Formik, Field, Form } from "formik"
 
-function App() {
+function Home(props) {
   return (
-    <div className="App">
-        Home
+    <div className="container-wrapper">
+    <Formik
+      initialValues={{
+        searchText: ""
+    }}
+      onSubmit={(values, { }) => {
+        //send get req
+        console.log("Searched", values.searchText)
+      }}
+      enableReinitialize
+    >
+      {({ errors, touched, setFieldValue, values }) => {
+        return (
+          <Form name="search">
+          <Field
+            type="input"
+            name="searchText"
+            placeholder="Search for merchandise"
+          />
+          <button type="submit">Search</button>
+              </Form>
+        )}}</Formik>
     </div>
   );
 }
 
-export default App;
+export default Home;
